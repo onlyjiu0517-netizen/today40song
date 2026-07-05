@@ -276,29 +276,16 @@ const img = document.getElementById("chara-img");
 const images = ["cara1.png", "cara2.png"];
 
 let index = 0;
+let flipped = false;
 
 setInterval(() => {
-  index = (index + 1) % images.length;
-  img.src = images[index];
-}, 500);
-
-  // 移動
-  x += speed * dir;
-
-  const maxX = window.innerWidth - 80;
-
-  if (x >= maxX) dir = -1;
-  if (x <= 0) dir = 1;
-
-  chara.style.left = x + "px";
-
-  // 向き（反転）
-  img.style.transform = dir === 1 ? "scaleX(1)" : "scaleX(-1)";
-
-  // 画像切り替え（ここが追加ポイント）
+  // 画像切替
   index = (index + 1) % images.length;
   img.src = images[index];
 
+  // 反転
+  flipped = !flipped;
+  img.style.transform = flipped ? "scaleX(-1)" : "scaleX(1)";
 }, 500);
   
 </script>

@@ -56,6 +56,10 @@
 
 <p>ボタンを押して今日の一曲を聴こう！</p>
 
+<p id="progress">
+今日は 0 / 27 曲 聴いたよ♪
+</p>
+  
 <button onclick="go()">🟦 今日の一曲を選ぶ</button>
 
 <div id="loading">
@@ -145,6 +149,13 @@ function savePlaylist(playlist) {
   localStorage.setItem("playlist", JSON.stringify(playlist));
 }
 
+function updateProgress() {
+  const playlist = getPlaylist();
+
+  document.getElementById("progress").textContent =
+    `今日は ${playlist.index} / ${shorts.length} 曲 聴いたよ♪`;
+}
+  
 function go() {
 
   document.querySelector("button").style.display = "none";
@@ -154,6 +165,15 @@ function go() {
 
     const playlist = getPlaylist();
 
+    if (playlist.index >= playlist.order.length) {
+  playlist.index = 0;
+  playlist.order = shuffle([...Array(shorts.length).keys()]);
+
+  savePlaylist(playlist);
+
+  alert("🎉 全部聴き終わったよ！\n\n新しくシャッフルするね♪");
+}
+    
     const songIndex = playlist.order[playlist.index];
 
     playlist.index++;
@@ -166,6 +186,8 @@ function go() {
 
 }
 
+updateProgress();
+  
 </script>
 
 </body>

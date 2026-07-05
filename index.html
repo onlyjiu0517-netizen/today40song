@@ -40,6 +40,40 @@
       cursor:pointer;
     }
 
+#loading{
+  position: relative;
+  overflow: hidden;
+}
+
+#snow-area{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.flake{
+  position: absolute;
+  top: -40px;
+  font-size: 24px;
+  animation: fall linear forwards;
+}
+
+@keyframes fall{
+  from{
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+
+  20%{
+    opacity: 1;
+  }
+
+  to{
+    transform: translateY(220px);
+    opacity: 0;
+  }
+}
+    
     #loading{
       display:none;
       font-size:1.3em;
@@ -50,6 +84,8 @@
 
 <body>
 
+<div id="snow"></div>
+  
 <div class="box">
 
 <h1>🎵 本日の一曲 🎵</h1>
@@ -63,7 +99,8 @@
 <button onclick="go()">🟦 今日の一曲を選ぶ</button>
 
 <div id="loading">
-選曲中... 🎵
+  <div id="snow-area"></div>
+  選曲中... 🎵
 </div>
 
 <div id="message" style="display:none;">
@@ -155,11 +192,41 @@ function updateProgress() {
   document.getElementById("progress").textContent =
     `今日は ${playlist.index} / ${shorts.length} 曲 聴いたよ♪`;
 }
+
+function showSnow() {
+
+  const area = document.getElementById("snow-area");
+
+  area.innerHTML = "";
+
+  const icons = ["🧊", "🎶"];
+
+  for (let i = 0; i < 15; i++) {
+
+    const flake = document.createElement("div");
+
+    flake.className = "flake";
+
+    flake.textContent = icons[Math.floor(Math.random() * icons.length)];
+
+    flake.style.left = Math.random() * 100 + "%";
+
+    flake.style.animationDuration = (0.8 + Math.random() * 0.6) + "s";
+
+    flake.style.animationDelay = (Math.random() * 0.3) + "s";
+
+    area.appendChild(flake);
+
+  }
+
+}
   
 function go() {
 
   document.querySelector("button").style.display = "none";
   document.getElementById("loading").style.display = "block";
+
+  showSnow();
 
   setTimeout(() => {
 

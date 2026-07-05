@@ -78,6 +78,10 @@
   z-index: 10000;
 }
 
+#chara-inner {
+  display: inline-block;
+}
+
 #chara img {
   width: 80px;
   display: block;
@@ -112,7 +116,9 @@
 </div>
 
 <div id="chara">
-  <img id="chara-img" src="cara1.png">
+  <div id="chara-inner">
+    <img id="chara-img" src="cara1.png">
+  </div>
 </div>
   
 <div id="message" style="display:none;">
@@ -283,6 +289,7 @@ function go() {
 
 updateProgress();
 
+const inner = document.getElementById("chara-inner");
 const img = document.getElementById("chara-img");
 
 const images = ["cara1.png", "cara2.png"];
@@ -295,7 +302,7 @@ setInterval(() => {
   img.src = images[index];
 
   flipped = !flipped;
-  img.style.transform = flipped ? "scaleX(-1)" : "scaleX(1)";
+  inner.style.transform = flipped ? "scaleX(-1)" : "scaleX(1)";
 }, 500);
   
 </script>

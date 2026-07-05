@@ -59,7 +59,7 @@
 #chara {
   position: fixed;
   bottom: 10px;
-  left: 0;
+  left: 10;
   pointer-events: none;
   z-index: 10000;
 }
@@ -277,12 +277,16 @@ let flipped = false;
 const chara = document.getElementById("chara");
 const img = document.getElementById("chara-img");
 
-let x = 0;
-let dir = 1;
+const images = ["chara1.png", "chara2.png"];
 
-const speed = window.innerWidth < 600 ? 1.5 : 3;
+let index = 0;
 
 setInterval(() => {
+  index = (index + 1) % images.length;
+  img.src = images[index];
+}, 500);
+
+  // 移動
   x += speed * dir;
 
   const maxX = window.innerWidth - 80;
@@ -292,8 +296,14 @@ setInterval(() => {
 
   chara.style.left = x + "px";
 
+  // 向き（反転）
   img.style.transform = dir === 1 ? "scaleX(1)" : "scaleX(-1)";
-}, 16);
+
+  // 画像切り替え（ここが追加ポイント）
+  index = (index + 1) % images.length;
+  img.src = images[index];
+
+}, 500);
   
 </script>
 

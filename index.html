@@ -199,21 +199,28 @@ function showSnow() {
 
   for (let i = 0; i < 50; i++) {
 
-    const flake = document.createElement("div");
+  const flake = document.createElement("div");
 
-    flake.className = "flake";
+  flake.className = "flake";
 
-    flake.textContent = icons[Math.floor(Math.random() * icons.length)];
+  flake.textContent = icons[Math.floor(Math.random() * icons.length)];
 
-    flake.style.left = Math.random() * window.innerWidth + "px";
+  // 横位置（まばら）
+  const margin = window.innerWidth * 0.1;
+  flake.style.left =
+    (Math.random() * (window.innerWidth + margin * 2) - margin) + "px";
 
-    flake.style.animationDuration = (0.8 + Math.random() * 0.6) + "s";
+  // サイズ（まばら）
+  flake.style.fontSize = (30 + Math.random() * 30) + "px";
 
-    flake.style.animationDelay = (Math.random() * 0.3) + "s";
+  // 落下速度
+  flake.style.animationDuration = (0.8 + Math.random() * 0.6) + "s";
 
-    area.appendChild(flake);
+  // 出現タイミングズレ
+  flake.style.animationDelay = (Math.random() * 0.3) + "s";
 
-  }
+  area.appendChild(flake);
+}
 
 }
   

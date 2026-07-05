@@ -60,7 +60,6 @@
   position: fixed;
   bottom: 10px;
   left: 0;
-  width: 100%;
   pointer-events: none;
   z-index: 10000;
 }
@@ -68,20 +67,6 @@
 #chara img {
   width: 80px;
   transition: transform 0.2s;
-}
-    
-.flake{
-  position: absolute;
-  top: -40px;
-  font-size: 60px;
-  animation: fall linear forwards;
-}
-
-@keyframes fall{
-  to{
-    transform: translateY(100vh);
-    opacity: 0;
-  }
 }
     
     #loading{
@@ -289,16 +274,26 @@ const charaImg = document.getElementById("chara-img");
 
 let flipped = false;
 
+const chara = document.getElementById("chara");
+const img = document.getElementById("chara-img");
+
+let x = 0;
+let dir = 1;
+
+const speed = window.innerWidth < 600 ? 1.5 : 3;
+
 setInterval(() => {
-  flipped = !flipped;
+  x += speed * dir;
 
-  if (flipped) {
-    charaImg.style.transform = "scaleX(-1)";
-  } else {
-    charaImg.style.transform = "scaleX(1)";
-  }
+  const maxX = window.innerWidth - 80;
 
-}, 1200);
+  if (x >= maxX) dir = -1;
+  if (x <= 0) dir = 1;
+
+  chara.style.left = x + "px";
+
+  img.style.transform = dir === 1 ? "scaleX(1)" : "scaleX(-1)";
+}, 16);
   
 </script>
 

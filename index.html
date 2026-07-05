@@ -60,7 +60,6 @@
   position: fixed;
   bottom: 10px;
   left: 10px;
-  pointer-events: none;
   z-index: 10000;
 }
 
@@ -272,21 +271,7 @@ function go() {
 updateProgress();
 
 const img = document.getElementById("chara-img");
-
-const images = ["chara1.png", "chara2.png"];
-
-let index = 0;
-let flipped = false;
-
-setInterval(() => {
-  // 画像切替
-  index = (index + 1) % images.length;
-  img.src = images[index];
-
-  // 反転
-  flipped = !flipped;
-  img.style.transform = flipped ? "scaleX(-1)" : "scaleX(1)";
-}, 500);
+img.src = "chara1.png";
   
 </script>
 

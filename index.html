@@ -56,6 +56,26 @@
   z-index: 9999;
 }
 
+#chara {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  font-size: 60px;
+  width: 100%;
+  pointer-events: none;
+  animation: moveChara 6s ease-in-out infinite alternate;
+  z-index: 10000;
+}
+
+@keyframes moveChara {
+  from {
+    transform: translateX(0px);
+  }
+  to {
+    transform: translateX(80vw);
+  }
+}
+    
 .flake{
   position: absolute;
   top: -40px;
@@ -99,6 +119,8 @@
   選曲中... 🎵
 </div>
 
+<div id="chara">🎧</div>
+  
 <div id="message" style="display:none;">
   
 </div>

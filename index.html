@@ -56,7 +56,7 @@
 
 <p>ボタンを押して今日の一曲を聴こう！</p>
 
-<button onclick="go()">🎲 今日の一曲を選ぶ</button>
+<button onclick="go()">🟦 今日の一曲を選ぶ</button>
 
 <div id="loading">
 選曲中... 🎵
@@ -107,6 +107,20 @@ function shuffle(array) {
   }
 
   return result;
+}
+
+function getToday() {
+  return new Date().toLocaleDateString("ja-JP");
+}
+
+function createNewPlaylist() {
+  const order = shuffle([...Array(shorts.length).keys()]);
+
+  localStorage.setItem("playlistDate", getToday());
+  localStorage.setItem("playlistOrder", JSON.stringify(order));
+  localStorage.setItem("playlistIndex", "0");
+
+  return order;
 }
 
 function go(){

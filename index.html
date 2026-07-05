@@ -198,7 +198,7 @@ function showSnow() {
   const icons = ["🧊", "🎶"];
 
   const isMobile = window.innerWidth < 768;
-const count = isMobile ? 25 : 50;
+const count = isMobile ? 40 : 70;
 
 for (let i = 0; i < count; i++) {
 
@@ -214,8 +214,12 @@ for (let i = 0; i < count; i++) {
     (Math.random() * (window.innerWidth + margin * 2) - margin) + "px";
 
   // サイズ（まばら）
+  flake.style.opacity = 0.2 + Math.random() * 0.5;
   flake.style.fontSize = (30 + Math.random() * 30) + "px";
-
+　if (isMobile) {
+  flake.style.fontSize = (18 + Math.random() * 25) + "px";
+}
+  
   // 落下速度
  flake.style.animationDuration =
   (isMobile ? (1.2 + Math.random() * 0.8)

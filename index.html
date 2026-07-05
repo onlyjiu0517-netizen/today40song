@@ -114,27 +114,55 @@ function getToday() {
 }
 
 function createNewPlaylist() {
-  const order = shuffle([...Array(shorts.length).keys()]);
+  const playlist = {
+    date: getToday(),
+    order: shuffle([...Array(shorts.length).keys()]),
+    index: 0
+  };
 
-  localStorage.setItem("playlistDate", getToday());
-  localStorage.setItem("playlistOrder", JSON.stringify(order));
-  localStorage.setItem("playlistIndex", "0");
+  localStorage.setItem("playlist", JSON.stringify(playlist));
 
-  return order;
+  return playlist;
 }
 
-function go(){
+function getPlaylist() {
+  const saved = localStorage.getItem("playlist");
 
-document.querySelector("button").style.display="none";
-document.getElementById("loading").style.display="block";
+  if (!saved) {
+    return createNewPlaylist();
+  }
 
-setTimeout(()=>{
+  const playlist = JSON.parse(saved);
 
-const random=Math.floor(Math.random()*shorts.length);
+  if (playlist.date !== getToday()) {
+    return createNewPlaylist();
+  }
 
-location.href=shorts[random];
+  return playlist;
+}
 
-},1000);
+function savePlaylist(playlist) {
+  localStorage.setItem("playlist", JSON.stringify(playlist));
+}
+
+function go() {
+
+  document.querySelector("button").style.display = "none";
+  document.getElementById("loading").style.display = "block";
+
+  setTimeout(() => {
+
+    const playlist = getPlaylist();
+
+    const songIndex = playlist.order[playlist.index];
+
+    playlist.index++;
+
+    savePlaylist(playlist);
+
+    location.href = shorts[songIndex];
+
+  }, 1000);
 
 }
 

@@ -271,9 +271,19 @@ function go() {
 updateProgress();
 
 const img = document.getElementById("chara-img");
-img.src = "chara1.png";
 
-console.log("test");
+const images = ["cara1.png", "cara2.png"];
+
+let index = 0;
+let flipped = false;
+
+setInterval(() => {
+  index = (index + 1) % images.length;
+  img.src = images[index];
+
+  flipped = !flipped;
+  img.style.transform = flipped ? "scaleX(-1)" : "scaleX(1)";
+}, 500);
   
 </script>
 

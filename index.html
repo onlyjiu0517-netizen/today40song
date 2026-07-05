@@ -281,10 +281,19 @@ const images = ["chara1.png", "chara2.png"];
 
 let index = 0;
 
+const chara = document.getElementById("chara");
+const img = document.getElementById("chara-img");
+
+const images = ["chara1.png", "chara2.png"];
+
+let index = 0;
+
+let x = 0;
+let dir = 1;
+
+const speed = window.innerWidth < 600 ? 1.5 : 3;
+
 setInterval(() => {
-  index = (index + 1) % images.length;
-  img.src = images[index];
-}, 500);
 
   // 移動
   x += speed * dir;

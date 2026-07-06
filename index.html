@@ -540,6 +540,28 @@ h1{
     margin: 10px auto 0 auto;
   }
 }
+
+@media (max-width: 768px) {
+
+  #main-illust{
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    width: 200px !important;
+    height: auto !important;
+
+    margin: 10px auto 0 auto !important;
+  }
+
+  .right{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+}
     
 </style>
 </head>
@@ -562,7 +584,7 @@ h1{
         今日は 0 / 27 曲 聴いたよ♪
       </p>
 
-      <button onclick="go()"> 今日の一曲を選ぶ</button>
+      <button onclick="go()"> 曲を聴く</button>
 
       
       <div id="loading" style="display:none;">

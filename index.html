@@ -324,6 +324,16 @@ body{
 .box{
   margin: auto;
 }    
+
+#list-page{
+  padding: 40px;
+  text-align: center;
+}
+
+#list-page ul{
+  list-style: none;
+  padding: 0;
+}
     
   </style>
 </head>
@@ -348,9 +358,19 @@ body{
 
       <button onclick="go()"> 今日の一曲を選ぶ</button>
 
+　　　<button onclick="showListPage()">🟦 song list</button>
+      
       <div id="loading" style="display:none;">
         選曲中... 🎵
       </div>
+
+<div id="list-page" style="display:none;">
+  <button onclick="backMain()">← 戻る</button>
+
+  <h2>🟦 song list</h2>
+  <ul id="list"></ul>
+</div>
+      
     </div>
 
     <div class="right">
@@ -564,6 +584,17 @@ function showSongList(){
 }
 
 showSongList();
+
+function showListPage(){
+  document.querySelector(".box").style.display = "none";
+  document.getElementById("list-page").style.display = "block";
+  showSongList();
+}
+
+function backMain(){
+  document.querySelector(".box").style.display = "block";
+  document.getElementById("list-page").style.display = "none";
+}
   
 </script>
 

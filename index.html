@@ -98,6 +98,55 @@
       font-size:1.3em;
       margin-top:20px;
     }
+
+.box{
+  padding:40px;
+  width:100%;
+  max-width:1000px;
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:40px;
+}
+
+/* 左 */
+.left{
+  flex:1;
+  text-align:left;
+}
+
+/* 右（イラスト） */
+.right{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+#main-illust{
+  width:280px;
+  max-width:100%;
+}
+
+@media (max-width: 768px) {
+  .top{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .left{
+    text-align:center;
+  }
+
+  #main-illust{
+    width:200px;
+  }
+}
+    
+    
   </style>
 </head>
 
@@ -107,28 +156,34 @@
   
 <div class="box">
 
-<h1>🧊 本日の40歌 🎶</h1>
+  <div class="top">
+    
+    <div class="left">
+      <h1>🧊 本日の40歌 🎶</h1>
 
-<p>ボタンを押して今日の一曲を聴こう！</p>
+      <p>ボタンを押して今日の一曲を聴こう！</p>
 
-<p id="progress">
-今日は 0 / 27 曲 聴いたよ♪
-</p>
-  
-<button onclick="go()">🟦 今日の一曲を選ぶ</button>
+      <p id="progress">
+        今日は 0 / 27 曲 聴いたよ♪
+      </p>
 
-<div id="loading" style="display:none;">
-  選曲中... 🎵
-</div>
+      <button onclick="go()">🟦 今日の一曲を選ぶ</button>
 
-<div id="chara">
-  <div id="chara-inner">
-    <img id="chara-img" src="cara1.png">
+      <div id="loading" style="display:none;">
+        選曲中... 🎵
+      </div>
+    </div>
+
+    <div class="right">
+      <img src="cara1.png" id="main-illust">
+    </div>
+
   </div>
-</div>
-  
-<div id="message" style="display:none;">
-  
+
+  <div id="song-area">
+    <div id="message"></div>
+  </div>
+
 </div>
 
 <script>

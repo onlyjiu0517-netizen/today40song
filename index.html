@@ -490,19 +490,30 @@ h1{
 
   .top{
     display: block;
-    padding: 15px;
   }
 
   .left,
   .right{
     width: 100%;
+    margin: 0;
+    padding: 0;
+    flex: unset;
+  }
+
+  .right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   #main-illust{
     display: block;
+    width: 200px;
+    height: auto;
     margin: 10px auto 0 auto;
   }
 
+}
 }
 
 @media (max-width: 768px) {

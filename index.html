@@ -358,18 +358,10 @@ body{
 
       <button onclick="go()"> 今日の一曲を選ぶ</button>
 
-　　　<button onclick="showListPage()">🟦 song list</button>
       
       <div id="loading" style="display:none;">
         選曲中... 🎵
       </div>
-
-<div id="list-page" style="display:none;">
-  <button onclick="backMain()">← 戻る</button>
-
-  <h2>🟦 song list</h2>
-  <ul id="list"></ul>
-</div>
       
     </div>
 
@@ -382,11 +374,6 @@ body{
   <div id="song-area">
     <div id="message"></div>
   </div>
-
-<div id="song-list">
-  <h2>🎵 song list</h2>
-  <ul id="list"></ul>
-</div>
   
 </div>
 
@@ -571,25 +558,7 @@ setInterval(() => {
   inner.style.transform = flipped ? "scaleX(-1)" : "scaleX(1)";
 }, 500);
 
-function showSongList(){
-  const list = document.getElementById("list");
-  list.innerHTML = "";
 
-  shorts.forEach((url, i) => {
-    const li = document.createElement("li");
-    li.textContent = `曲 ${i + 1}`;
-    li.style.margin = "6px 0";
-    list.appendChild(li);
-  });
-}
-
-showSongList();
-
-function showListPage(){
-  document.querySelector(".box").style.display = "none";
-  document.getElementById("list-page").style.display = "block";
-  showSongList();
-}
 
 function backMain(){
   document.querySelector(".box").style.display = "block";

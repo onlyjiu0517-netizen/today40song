@@ -266,6 +266,28 @@ button{
   margin-top: 20px;
   width: 100%;
 }
+
+.top{
+  background: rgba(255,255,255,0.6);
+  border: 2px solid #7cc7ff;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+#song-list{
+  margin-top: 30px;
+  background: rgba(255,255,255,0.6);
+  border: 2px solid #7cc7ff;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: left;
+}
+
+#song-list h2{
+  text-align: center;
+  margin-bottom: 10px;
+}
     
   </style>
 </head>
@@ -305,6 +327,11 @@ button{
     <div id="message"></div>
   </div>
 
+<div id="song-list">
+  <h2>🎵 song list</h2>
+  <ul id="list"></ul>
+</div>
+  
 </div>
 
   
@@ -487,6 +514,20 @@ setInterval(() => {
   flipped = !flipped;
   inner.style.transform = flipped ? "scaleX(-1)" : "scaleX(1)";
 }, 500);
+
+function showSongList(){
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+
+  shorts.forEach((url, i) => {
+    const li = document.createElement("li");
+    li.textContent = `曲 ${i + 1}`;
+    li.style.margin = "6px 0";
+    list.appendChild(li);
+  });
+}
+
+showSongList();
   
 </script>
 
